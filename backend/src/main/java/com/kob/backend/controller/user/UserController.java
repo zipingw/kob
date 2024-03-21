@@ -31,17 +31,8 @@ public class UserController {
         return userMapper.selectOne(queryWrapper);
     }
 
-    @GetMapping("/user/add/{userId}/{username}/{password}/")
-    public String addUser(@PathVariable int userId,
-                          @PathVariable String username,
-                          @PathVariable String password) {
 
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(password);
-        User user = new User(userId, username, encodedPassword);
-        userMapper.insert(user);
-        return "Add User Successfully";
-    }
+
 
     @GetMapping("/user/delete/{userId}/")
     public String deleteUser(@PathVariable int userId){
